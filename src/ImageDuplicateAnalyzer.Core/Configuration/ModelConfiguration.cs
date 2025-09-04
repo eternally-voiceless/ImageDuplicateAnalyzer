@@ -20,3 +20,14 @@ public class ModelDownloadOptions
     public string RootDirName { get; set; } = string.Empty;
 
 }
+
+public class TestDirectoryConfiguration
+{
+    public const string SectionName = "TestData";
+
+    public string DefaultName { get; set; } = string.Empty;
+    public string DefaultTestSet { get; set; } = string.Empty;
+    public string TestSet1 { get; set; } = string.Empty;
+    public string TestSet2 { get; set; } = string.Empty;
+    public string TestSet3 { get; set; } = string.Empty;
+}

@@ -15,6 +15,7 @@ public static class ServiceCollectionExtensions
     {
         services.Configure<ModelDownloadOptions>(config.GetSection(ModelDownloadOptions.SectionName));
         services.Configure<ModelConfiguration>(config.GetSection(ModelConfiguration.SectionName));
+        services.Configure<TestDirectoryConfiguration>(config.GetSection(TestDirectoryConfiguration.SectionName));
 
         services.AddHttpClient<IModelDownloadService, ModelDownloadService>((serviceProvider, client) =>
         {

@@ -59,6 +59,7 @@ public class Application
     private readonly IFileService _fileService;
     private readonly IImageEncoder _encoder;
     private readonly IImageAnalysisService _imageAnalysisService;
+    private readonly IUserInterfaceService _UI;
 
 
     public Application(
@@ -67,7 +68,8 @@ public class Application
         IOptions<ModelDownloadOptions> modelDownloadOptions,
         IFileService fileService,
         IImageAnalysisService imageAnalysisService,
-        IImageEncoder encoder
+        IImageEncoder encoder,
+        IUserInterfaceService userInterface
     )
     {
         _logger = logger;
@@ -76,6 +78,7 @@ public class Application
         _fileService = fileService;
         _imageAnalysisService = imageAnalysisService;
         _encoder = encoder;
+        _UI = userInterface;
     }
 
     public async Task RunAsync()
@@ -87,11 +90,11 @@ public class Application
 
             AnsiConsole.Clear();
 
-            string selectedPath = SelectDirectory("Select source directory");
+            string selectedPath = _UI.SelectDirectory("Select source directory");
 
             AnsiConsole.Write(new Panel($"[yellow]Selected directory:\n{selectedPath}[/]"));
 
-            string selectedImage = SelectImage(selectedPath, "Select source image");
+            string selectedImage = _UI.SelectImage(_fileService.GetAllImages(selectedPath), "Select source image");
 
             if (selectedImage != string.Empty)
             {
@@ -102,7 +105,7 @@ public class Application
                 return;
             }
 
-            string path = SelectDirectory("Select target directory");
+            string path = _UI.SelectDirectory("Select target directory");
 
             AnsiConsole.Write(new Panel($"[yellow]Target directory:\n{path}[/]"));
 

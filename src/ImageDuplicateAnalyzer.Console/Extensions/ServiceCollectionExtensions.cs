@@ -24,6 +24,7 @@ public static class ServiceCollectionExtensions
         });
 
         services.AddSingleton<IFileService, FileService>();
+        services.AddSingleton<IUserInterfaceService, UIService>();
 
         services.AddSingleton<IImageEncoder>(serviceProvider =>
         {

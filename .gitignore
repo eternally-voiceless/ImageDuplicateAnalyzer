@@ -492,6 +492,6 @@ $RECYCLE.BIN/
 # Additional directories
 Drafts/
 guides/
-Models/
+/Models/
 prompts/
 reviews/

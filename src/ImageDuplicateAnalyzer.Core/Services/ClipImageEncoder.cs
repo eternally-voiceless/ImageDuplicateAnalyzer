@@ -22,6 +22,9 @@ public class ClipImageEncoder : IImageEncoder
     private readonly InferenceSession _session;
     private readonly ILogger<ClipImageEncoder>? _logger;
     private const int ImageSize = 224; // Standard size for CLIP ViT-B/32
+
+    // https://github.com/openai/CLIP/issues/20
+    // https://arxiv.org/abs/2103.00020
     private readonly float[] _imageMean = { 0.48145466f, 0.4578275f, 0.40821073f };
     private readonly float[] _imageStd = { 0.26862954f, 0.26130258f, 0.27577711f };
     private bool _disposed;

@@ -14,7 +14,7 @@ public class ModelDownloadOptions
 {
     public const string SectionName = "ModelDownloadOptions";
 
-    public int TimeoutMinutes { get; set; } = 0;
+    public int TimeoutMinutes { get; set; } = 1;
     public string UserAgent { get; set; } = string.Empty;
     public string ModelsDirectory { get; set; } = string.Empty;
     public string RootDirName { get; set; } = string.Empty;
